@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const PHOTOS = [
-  { src: "/img/anak1.jpg", tilt: "left-far" },
-  { src: "/img/anak2.jpg", tilt: "left-mid" },
-  { src: "/img/anak3.jpg", tilt: "left-near" },
-  { src: "/img/anak4.jpg", tilt: "center" },
-  { src: "/img/anak5.jpg", tilt: "right-near" },
-  { src: "/img/anak6.jpg", tilt: "right-mid" },
-  { src: "/img/anak7.jpg", tilt: "right-far" },
+  { src: "/img/Anak1.jpg", tilt: "left-far" },
+  { src: "/img/Anak2.jpg", tilt: "left-mid" },
+  { src: "/img/Anak3.jpg", tilt: "left-near" },
+  { src: "/img/Anak4.jpg", tilt: "center" },
+  { src: "/img/Anak5.jpg", tilt: "right-near" },
+  { src: "/img/Anak6.jpg", tilt: "right-mid" },
+  { src: "/img/Anak7.jpg", tilt: "right-far" },
 ];
 
 const tiltStyles = {
