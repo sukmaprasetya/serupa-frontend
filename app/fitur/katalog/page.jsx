@@ -387,62 +387,63 @@ export default function KatalogPage() {
       </div>
 
       {/* Panel filter */}
-      <div className="bg-gray-50 border-y border-gray-200 px-6 py-6 sticky top-[72px] z-40">
-        <div className="max-w-5xl mx-auto flex flex-col gap-4">
+      <div className="bg-gray-50 border-y border-gray-200 px-4 py-4 sticky top-[72px] z-40">
+        <div className="max-w-5xl mx-auto flex flex-col gap-3">
 
-          {/* Search + Jenjang + Counter */}
-          <div className="flex items-center gap-3">
+          {/* Baris 1: Search + Counter */}
+          <div className="flex items-center gap-2">
             <div className="relative flex-1">
-              {/* BUG FIX 3b: IconSearch menggantikan SVG inline di input */}
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                <IconSearch size={16} />
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                <IconSearch size={15} />
               </div>
               <input
                 type="text" value={cari}
                 onChange={e => { setCari(e.target.value); setHalaman(1); }}
-                placeholder="Cari nama metode atau tujuan pembelajaran..."
-                className="w-full border border-gray-200 bg-white rounded-xl pl-10 pr-9 py-2.5 text-sm text-gray-700 focus:outline-none focus:border-gray-400 shadow-sm"
+                placeholder="Cari metode..."
+                className="w-full border border-gray-200 bg-white rounded-xl pl-9 pr-8 py-2 text-sm text-gray-700 focus:outline-none focus:border-gray-400 shadow-sm"
               />
               {cari && (
                 <button onClick={() => { setCari(""); setHalaman(1); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-600 transition-colors">
-                  {/* BUG FIX 3c: IconX menggantikan SVG inline di tombol clear search */}
-                  <IconX size={15} color="currentColor" />
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-600 transition-colors">
+                  <IconX size={14} color="currentColor" />
                 </button>
               )}
             </div>
-            <select value={jenjangAktif} onChange={e => { setJenjangAktif(e.target.value); setHalaman(1); }}
-              className="border border-gray-200 bg-white rounded-xl px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:border-gray-400 shadow-sm cursor-pointer shrink-0">
-              <option value="">Semua Jenjang</option>
-              {JENJANG_OPTIONS.map(j => <option key={j.value} value={j.value}>{j.label}</option>)}
-            </select>
-            <div className="shrink-0 text-right w-28">
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Total</p>
-              <p className="text-2xl font-bold text-gray-900 leading-tight">
+            {/* Counter — ringkas di mobile */}
+            <div className="shrink-0 text-right">
+              <p className="text-lg font-bold text-gray-900 leading-tight">
                 {loading ? "—" : metodeTerfilter.length}
-                <span className="text-sm font-normal text-gray-400 ml-1">metode</span>
+                <span className="text-xs font-normal text-gray-400 ml-1">metode</span>
               </p>
             </div>
           </div>
 
-          {/* Filter jenis */}
+          {/* Baris 2: Jenjang (full width di mobile) */}
+          <select value={jenjangAktif} onChange={e => { setJenjangAktif(e.target.value); setHalaman(1); }}
+            className="w-full border border-gray-200 bg-white rounded-xl px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-gray-400 shadow-sm cursor-pointer">
+            <option value="">Semua Jenjang</option>
+            {JENJANG_OPTIONS.map(j => <option key={j.value} value={j.value}>{j.label}</option>)}
+          </select>
+
+          {/* Baris 3: Filter jenis — grid 5 kolom di mobile agar rapi */}
           <div>
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Filter Jenis Kebutuhan Khusus</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-2">
+              Jenis Kebutuhan Khusus
+            </p>
+            <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
               {JENIS_ABK.map(j => {
                 const aktif = jenisAktif === j.id;
-                // BUG FIX 2: simpan komponen ke variabel kapital sebelum render sebagai JSX
                 const IkonJenis = j.icon;
                 return (
                   <button key={j.id} onClick={() => pilihJenis(j.id)}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all border"
+                    className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-1.5 px-1 sm:px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold transition-all border"
                     style={{
                       backgroundColor: aktif ? j.warna  : "#ffffff",
                       color:           aktif ? "#ffffff" : "#6b7280",
                       borderColor:     aktif ? j.warna  : "#e5e7eb",
                     }}>
-                    {IkonJenis && <IkonJenis size={15} color={aktif ? "#ffffff" : "#9ca3af"} />}
-                    <span>{j.label}</span>
+                    {IkonJenis && <IkonJenis size={16} color={aktif ? "#ffffff" : "#9ca3af"} />}
+                    <span className="text-[10px] sm:text-sm leading-tight text-center">{j.label}</span>
                   </button>
                 );
               })}

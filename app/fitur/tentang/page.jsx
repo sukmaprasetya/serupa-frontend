@@ -370,7 +370,7 @@ export default function TentangPage() {
               <p className="text-gray-600 text-sm leading-relaxed mb-5">
                 Sistem SERUPA dikembangkan sebagai <strong>Tugas Akhir</strong> pada
                 Program Studi Informatika, Fakultas Matematika dan Ilmu Pengetahuan Alam,
-                Universitas Udayana tahun 2056.
+                Universitas Udayana tahun 2026.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
