@@ -578,13 +578,12 @@ export default function KatalogPage() {
                       {m.media.length > 2 && <span className="text-[10px] text-gray-400 self-center">+{m.media.length - 2} media</span>}
                     </div>
                   )}
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-3 border-t border-gray-100 mt-auto gap-1.5">
                     <p className="text-[10px] font-medium text-gray-400 uppercase tracking-tight">
                       {m.usiaKronologisMin != null && m.usiaKronologisMax != null
                         ? `Usia ${m.usiaKronologisMin}–${m.usiaKronologisMax} thn` : "Semua Usia"}
                     </p>
-                    {/* BUG FIX 3f: IconChevronRight menggantikan SVG inline panah */}
-                    <span className="text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: warnaAktif }}>
+                    <span className="text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all self-start sm:self-auto" style={{ color: warnaAktif }}>
                       Lihat Detail
                       <IconChevronRight size={13} color={warnaAktif} />
                     </span>
