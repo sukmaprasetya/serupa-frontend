@@ -483,7 +483,7 @@ export default function DetailPage() {
   const TABS = [
     { id: "panduan", label: "Panduan & Langkah" },
     { id: "info",    label: "Info Lengkap"       },
-    { id: "terkait", label: "Metode Lain"        },
+    { id: "terkait", label: "Metode Terkait"        },
   ];
 
   return (
@@ -742,11 +742,11 @@ export default function DetailPage() {
         )}
 
         {/* ══════════════════════════════════════════
-            TAB 3: METODE LAIN
+            TAB 3: METODE TERKAIT
         ══════════════════════════════════════════ */}
         {tabAktif === "terkait" && (
           <div className="flex flex-col gap-6">
-            {loadRelasi ? <Spinner label="Mencari metode lain..." /> : (
+            {loadRelasi ? <Spinner label="Mencari metode Terkait..." /> : (
               <>
                 {(!relasiList || relasiList.length === 0) ? (
                   <div className="text-center py-16 border border-dashed border-gray-200 rounded-2xl">
